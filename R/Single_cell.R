@@ -38,7 +38,7 @@ generate_boots <- function(celltype, n) {
 
 get_ave_exp <- function(i, myseurat, samples,myident) {
   meta.data=myseurat@meta.data[samples[,i],]
-  sample <-myseurat@assays$RNA@counts[,samples[,i]]
+  sample <-myseurat[["RNA"]]$counts[,samples[,i]]
   SeuratObject<-suppressWarnings(
     CreateSeuratObject(count=sample,meta.data = meta.data))
   SeuratObject<-NormalizeData(SeuratObject,verbose = FALSE)
